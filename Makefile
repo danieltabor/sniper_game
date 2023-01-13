@@ -6,7 +6,7 @@ CFLAGS=-I/usr/local/include -I.
 LDFLAGS=-Wl,-rpath,. -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 
 dist: sniper
-	python make_unix_dist.py sniper sniper_lin64
+	./make_unix_dist.py sniper sniper_lin64
 	rm -f sniper
 	tar -czvf sniper_lin64.tgz sniper_lin64
 
@@ -25,8 +25,8 @@ Target.o: Target.cpp Target.h
 res.o: resources.o
 	$(CPP) $(CFLAGS) -c res.c
 
-resources.o: $(RESOURCE_FILES)
-	python pack_resources.py $(RESOURCE_FILES)
+resources.o: pack_resources.py $(RESOURCE_FILES)
+	./pack_resources.py $(RESOURCE_FILES)
 	$(CPP) $(CFLAGS) -c resources.c
 
 clean:
@@ -35,5 +35,7 @@ clean:
 	rm -f \#*
 
 distclean: clean
+	rm -f resources.h
+	rm -f resources.c
 	rm -f sniper
 	rm -rf sniper_lin64

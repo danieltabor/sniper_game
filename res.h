@@ -2,10 +2,11 @@
 #define __RES_H__
 
 #include<SDL2/SDL.h>
+#include<stdint.h>
 
 typedef struct {
   unsigned int len;
-  char *data;
+  uint8_t *data;
 } resource_t;
 
 typedef struct {
