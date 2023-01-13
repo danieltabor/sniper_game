@@ -1,0 +1,40 @@
+#include "res.h"
+#define RESOURCE_COUNT 35
+#define NOTEBOOK_TTF 0
+#define BAD_OGG 1
+#define BGM_OGG 2
+#define GOOD_OGG 3
+#define SHOT_OGG 4
+#define HOWTO_JPG 5
+#define TITLE_JPG 6
+#define TITLE_OGG 7
+#define DEAD_PNG 8
+#define MAP_BG_PNG 9
+#define MAP_FG_PNG 10
+#define MAP_MASK_PNG 11
+#define NOTEBOOK_PNG 12
+#define SCOPE_PNG 13
+#define SCRIBBLE_PNG 14
+#define TARGET_0_PNG 15
+#define TARGET_1_PNG 16
+#define TARGET_2_PNG 17
+#define TARGET_3_PNG 18
+#define TARGET_4_PNG 19
+#define TARGET_5_PNG 20
+#define TARGET_6_PNG 21
+#define TARGET_7_PNG 22
+#define TARGET_8_PNG 23
+#define TARGET_9_PNG 24
+#define TARGET_10_PNG 25
+#define TARGET_11_PNG 26
+#define TARGET_12_PNG 27
+#define TARGET_13_PNG 28
+#define TARGET_14_PNG 29
+#define TARGET_15_PNG 30
+#define TARGET_16_PNG 31
+#define TARGET_17_PNG 32
+#define TARGET_18_PNG 33
+#define TARGET_19_PNG 34
+#ifndef __RESOURCES_C__
+extern resource_t resources[];
+#endif
