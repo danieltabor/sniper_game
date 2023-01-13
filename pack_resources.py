@@ -23,20 +23,34 @@
 ## SUCH DAMAGE.
 ##
 import sys
+import os
+
+def usage():
+	filename = os.path.basename(sys.argv[0])
+	print("Usage:")
+	print("%s [-h] source_directory" % filename)
+	print("")
+	sys.exit(1)
 
 def main():
+	if "-h" in sys.argv or len(sys.argv) != 2 or not os.path.isdir(sys.argv[1]):
+		usage()
+	src_dir = sys.argv[1]
+	resource_filenames = os.listdir(src_dir)
+	resource_filenames.sort()
 	c_fp = open("resources.c","w")
 	h_fp = open("resources.h","w")
 	h_fp.write('#include "res.h"\n')
-	h_fp.write('#define RESOURCE_COUNT %d\n' % len(sys.argv[1:]))
+	h_fp.write('#define RESOURCE_COUNT %d\n' % len(resource_filenames))
 	c_fp.write("#define __RESOURCES_C__\n")
 	c_fp.write('#include "res.h"\n')
 	count = 0
 	lengths = []
-	for path in sys.argv[1:]:
+	for filename in resource_filenames:
+		path = os.path.join(src_dir,filename)
 		f = open(path,"rb")
 		data = f.read()
-		defname = path.upper().replace(".","_")
+		defname = filename.upper().replace(".","_")
 		h_fp.write("#define %s %d\n" % (defname,count))
 		c_fp.write("static uint8_t resource%d[] = {" % count)
 		for i in range(len(data)):
